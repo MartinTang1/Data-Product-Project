@@ -19,7 +19,7 @@ def create_visualizations():
     print("Fetching data and generating charts.")
     
     # -----------------------------------------------------------------
-    # CHART 1: Top 10 Revenue-Generating Countries
+    # CHART 1: Top 5 Revenue-Generating Countries
     # -----------------------------------------------------------------
     country_query = """
         SELECT c.country, SUM(f.total_revenue) as total_sales
@@ -38,6 +38,29 @@ def create_visualizations():
     plt.ylabel('Total Sales ($)')
     plt.tight_layout()
     plt.savefig(os.path.join(OUTPUT_DIR, "top_markets.png"))
+    plt.close()
+
+    # -----------------------------------------------------------------
+    # CHART 1B: Top 5 International Markets (Excluding United Kingdom)
+    # -----------------------------------------------------------------
+    int_country_query = """
+        SELECT c.country, SUM(f.total_revenue) as total_sales
+        FROM fact_retail_sales f
+        JOIN dim_customers c ON f.customer_id = c.customer_id
+        WHERE c.country != 'United Kingdom'
+        GROUP BY c.country
+        ORDER BY total_sales DESC
+        LIMIT 5;
+    """
+    int_country_df = pd.read_sql_query(int_country_query, conn)
+    
+    plt.figure(figsize=(8, 5))
+    plt.bar(int_country_df['country'], int_country_df['total_sales'])
+    plt.title('Top 5 International Markets (Excluding UK)')
+    plt.xlabel('Country')
+    plt.ylabel('Total Sales ($)')
+    plt.tight_layout()
+    plt.savefig(os.path.join(OUTPUT_DIR, "non_uk_markets.png"))
     plt.close()
 
     # -----------------------------------------------------------------

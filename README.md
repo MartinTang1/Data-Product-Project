@@ -82,9 +82,17 @@ Utilizes SQL `LAG()` window functions within Common Table Expressions (CTEs) to 
 ![Month over Month Revenue Trend](reports/figures/revenue_trend.png)
 
 ### Chart B: Top Performing Global Markets
-Isolates total high-value transaction volume mapped out by consumer geographic territories.
+Because the United Kingdom represents the vast majority of transactional volume, the analysis is split into two viewpoints to prevent skewed scaling and clearly isolate international market distribution.
+
+#### Global Market Share (Including UK)
+Isolates total high-value transaction volume globally, highlighting the dominance of the primary domestic market.
 
 ![Top Markets by Revenue](reports/figures/top_markets.png)
+
+#### International Market Expansion (Excluding UK)
+By removing the UK, this chart rescales the visual axis to reveal granular performance trends and revenue distributions across active international territories like the Netherlands, EIRE (Ireland), Germany, France and Australia.
+
+![International Markets by Revenue](reports/figures/non_uk_markets.png)
 
 ### Chart C: Shifting Product Demand by Cohort Quarter
 Utilizes `DENSE_RANK() OVER (PARTITION BY year, quarter ORDER BY SUM(quantity) DESC)` to isolate shifting seasonal consumer demand.

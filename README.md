@@ -1,6 +1,6 @@
 # Data-Product-Project
 
-This project was built as a practice application to design, implement, and document an end-to-end data engineering lifecycle. It simulates a production data engineering workflow by transforming raw, messy transactional retail data into an optimized, relational Star Schema data warehouse using SQLite and Python. 
+This project was built as a practice application to design, implement, and document an end-to-end data engineering lifecycle. It simulates a production data engineering workflow by transforming raw, messy transactional retail data—sourced from Kaggle's [Online Retail Dataset](https://www.kaggle.com/datasets/ulrikthygepedersen/online-retail-dataset) into an optimized, relational Star Schema data warehouse using SQLite and Python.
 
 The goal of this repository is to demonstrate practical knowledge of the ETL (Extract, Transform, Load) pipeline architecture, analytical SQL modeling, and automated business intelligence reporting.
 
@@ -12,7 +12,8 @@ To minimize data redundancy and maximize query performance, the database structu
 *   **Fact Table:** `fact_retail_sales` (Stores transactional numeric quantitative values: quantities, unit prices, and calculated total revenue metrics).
 *   **Dimension Tables:** `dim_customers` (Geographic context), `dim_products` (Stock item text descriptions), and `dim_date` (Time hierarchies for trend grouping).
 
-*(image of star schema here!)*
+![Star Schema](images/Star-schema.png)
+*Image of the Star schema from Wikipedia*
 
 ---
 
@@ -23,17 +24,26 @@ Here is a visual breakdown of how the data changes states at different points in
 ### Phase 1: The Raw Input State
 The data starts as a giant, unstructured, flat file with missing fields, inconsistent dates, and redundant rows. 
 *   **Database Checkpoint:** `ecommerce_warehouse.db` contains basic staging tables before relational separation.
-*   *(screenshot of the raw, messy staging data in SQLite Viewer here)*
+<br>
+
+  ![Raw Messy Data](images/RawMessyData.png)
+    *Image of the Raw messy Data*
 
 ### Phase 2: The Clean Data Product Schema
 Running the pipeline processes the rows via `pandas`, drops null values, enforces proper data types, separates strings from numeric entities, and populates them into the Star Schema tables.
-*   **Database Checkpoint:** Relational breakdown showing separate tables for Facts and Dimensions.
-*   *(Insert screenshot showing the clean structure of fact_retail_sales or dimension tables here)*
+*   **Database Checkpoint:** Relational breakdown showing separate tables for Facts and Dimensions. <br>
+<br>
+
+  ![Fact Retail Sales](images/FactRetailSales.png)
+    *Image of the fact_retail_sales*
 
 ### Phase 3: Analytical SQL Querying
 Using analytical queries directly against the database allows us to extract deep performance metrics dynamically without altering the core warehouse structure.
 *   **Database Checkpoint:** Query results panel displaying business calculations.
-*   *(Insert screenshot of the 3-table SQL query execution layout here)*
+<br>
+
+  ![Analytical SQL Tables](images/AnalyticalSQLTables.png) <br>
+    *Image of the 3 analytical SQL Tables*
 
 ---
 

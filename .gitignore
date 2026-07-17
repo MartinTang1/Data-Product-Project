@@ -216,3 +216,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local SQLite databases (keep the local DB files off GitHub)
+*.db
+*.sqlite
+*.sqlite3
+
+# Raw Kaggle CSV/Excel files
+data/raw/
+*.csv
+*.xlsx

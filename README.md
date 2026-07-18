@@ -53,6 +53,7 @@ Using analytical queries directly against the database allows us to extract deep
 *   **Data Manipulation:** pandas
 *   **Database Engine:** SQLite
 *   **Visualization Engine:** matplotlib
+*   **Database Inspection:** SQLite Viewer Extension
 
 ### How to Run the Infrastructure
 

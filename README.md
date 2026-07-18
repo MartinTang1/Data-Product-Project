@@ -1,6 +1,6 @@
 # Data-Product-Project
 
-This project was built as a practice application to design, implement, and document an end-to-end data engineering lifecycle. It simulates a production data engineering workflow by transforming raw, messy transactional retail data—sourced from Kaggle's [Online Retail Dataset](https://www.kaggle.com/datasets/ulrikthygepedersen/online-retail-dataset) into an optimized, relational Star Schema data warehouse using SQLite and Python.
+This project was built as a practice application to design, implement, and document an end-to-end data engineering lifecycle. It simulates a production data engineering workflow by transforming raw, messy transactional retail data sourced from Kaggle's [Online Retail Dataset](https://www.kaggle.com/datasets/ulrikthygepedersen/online-retail-dataset) into an optimized, relational Star Schema data warehouse using SQLite and Python.
 
 The goal of this repository is to demonstrate practical knowledge of the ETL (Extract, Transform, Load) pipeline architecture, analytical SQL modeling, and automated business intelligence reporting.
 
@@ -56,17 +56,20 @@ Using analytical queries directly against the database allows us to extract deep
 
 ### How to Run the Infrastructure
 
-1. **Install Prerequisites:** <br>
+1. **Download and Prepare the Dataset:** <br>
+   Download the archive zip file directly from the Kaggle [Online Retail Dataset](https://www.kaggle.com/datasets/ulrikthygepedersen/online-retail-dataset). Extract the contents, place the unzipped CSV file inside the `data/raw/` folder, and ensure it is renamed to `raw_dataset.csv`.
+
+2. **Install Prerequisites:** <br>
    This installs the essential data manipulation and plotting libraries required to execute the pipeline:
 ```bash
 pip install pandas matplotlib
 ```
-2. **Initialize the Warehouse and Execute ETL:** <br>
+3. **Initialize the Warehouse and Execute ETL:** <br>
 This script sets up the database schema, cleans the raw dataset, and populates the Star Schema tables:
 ```bash
 python src/python/build_warehouse.py
 ```
-3. **Automate Executive Visualization Dashboards:** <br>
+4. **Automate Executive Visualization Dashboards:** <br>
 This script queries the finished warehouse to extract metrics and generate visual analysis charts:
 ```bash
 python src/python/generate_dashboard.py
